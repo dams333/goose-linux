@@ -24,7 +24,7 @@ void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width,int *height,
 
   xpm_att.visual = xvar->visual;
   xpm_att.colormap = xvar->cmap;
-  xpm_att.depth = xvar->depth;
+  xpm_att.depth = 32;
   xpm_att.bitmap_format = ZPixmap;
   xpm_att.valuemask = XpmDepth|XpmBitmapFormat|XpmVisual|XpmColormap;
   if (xpm_func(xvar->display,param,&img1,&img2,&xpm_att))
@@ -49,7 +49,7 @@ void		*mlx_int_xpm_f_image(t_xvar *xvar,int *width,int *height,
     {
       XFreePixmap(xvar->display,im2->pix);
       im2->pix = XCreatePixmap(xvar->display,xvar->root,
-			       *width,*height,xvar->depth);
+			       *width,*height,32);
     }
   if (im2->type>MLX_TYPE_XIMAGE)
     {
